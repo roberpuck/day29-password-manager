@@ -17,8 +17,9 @@ def generate_password():
     password_letters = [random.choice(letters) for nr in range(nr_letters)]
     password_numbers = [random.choice(numbers) for nr in range(nr_numbers)]
     password_symbols = [random.choice(symbols) for nr in range(nr_symbols)]
-
-    password_generated = ''.join([item for sublist in [password_letters,password_numbers,password_symbols] for item in sublist])
+    password_generated_list = [item for sublist in [password_letters,password_numbers,password_symbols] for item in sublist]
+    shuffle(password_generated_list)
+    password_generated = ''.join(password_generated_list)
     pwd_entry.delete(0,END)
     pwd_entry.insert(0,password_generated)
 
